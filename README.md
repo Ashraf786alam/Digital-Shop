@@ -1,5 +1,4 @@
 # Digital-Shop
-It is an Django Ecommerce  Project
 ---------------------------------------------------------
 DigitalShop is a an Ecommerce Website where user can download the file format like audio,video,jpg,png,pdf etc after once complete the payment.
 
