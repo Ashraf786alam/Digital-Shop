@@ -1,0 +1,220 @@
+<script>
+var random_value=0;
+//var password="";
+//var repassword="";
+function fun(){
+
+  var name=document.getElementById("name").value;
+  var email=document.getElementById("email").value;
+  var password=document.getElementById("password").value;
+  var repassword=document.getElementById("repassword").value;
+  var phone=document.getElementById("phone").value;
+
+  if(name==""){
+
+    var name_req=document.getElementById("name_required")
+    name_req.hidden=false
+
+     $("#submitbtn").attr('disabled','true')
+  }
+  else if(email==""){
+    var email_req=document.getElementById("email_required")
+    email_req.hidden=false
+     $("#submitbtn").attr('disabled','true')
+  }
+  else if(password==""){
+    var password_req=document.getElementById("password_required")
+    password_req.hidden=false
+     $("#submitbtn").attr('disabled','true')
+  }
+
+  else if(repassword==""){
+    var re_password_req=document.getElementById("re_password_required")
+    re_password_req.hidden=false
+     $("#submitbtn").attr('disabled','true')
+  }
+  else if(phone==""){
+    var phone_req=document.getElementById("phone_required")
+    phone_req.hidden=false
+     $("#submitbtn").attr('disabled','true')
+  }
+  else if(password!=repassword){
+    var verify_password=document.getElementById("verify_password")
+    verify_password.hidden=false
+     $("#submitbtn").attr('disabled','true')
+  }
+  else{
+    var loading=document.getElementById("loading");
+    loading.hidden=false;
+     document.getElementById("name").readOnly = true;
+     document.getElementById("email").readOnly = true;
+     document.getElementById("phone").readOnly = true;
+     document.getElementById("password").readOnly = true;
+     document.getElementById("repassword").readOnly = true;
+    $("#submitbtn").removeAttr('disabled')
+    $("#submitbtn").hide();
+  var div=document.getElementById("otp_field")
+  div.hidden=false
+
+  var div1=document.getElementById("div1")
+  div1.hidden=false
+
+  var hid=document.getElementById("hid")
+  hid.hidden=false
+  $("#otp_field").css('margin-left','400px')
+  $("#otp_field").css('width','200px')
+  $("#otp_field").css('height','40px')
+  $("#hid").css('margin-left','400px')
+  random_value=Math.floor(Math.random()*1000000);
+  alert(random_value)
+  var url="/Download/verify?email="+email+"&OTP="+random_value+"&name="+name;
+  alert(url)
+  var req = new XMLHttpRequest();
+ req.onreadystatechange = function() {
+   if (this.readyState == 4 && this.status == 200) {
+    if(req.responseText=='true')
+    {
+      var loading=document.getElementById("loading");
+      loading.hidden=true;
+      var para=document.getElementById("para")
+      para.hidden=false
+
+    }
+   }
+ };
+ req.open("GET",url, true);
+ req.send();
+}
+}
+var len1=0;
+var len2=0;
+var len3=0;
+//--------------------------------------------------------------
+$("#name").mouseout(function(){
+    var name1=document.getElementById("name").value;
+    len1=name1.length;
+    if(len1!=0){
+      var name_req1=document.getElementById("name_required")
+      name_req1.hidden=true;
+    }
+  });
+//----------------------------------------------------
+  $("#email").mouseout(function(){
+    var email1=document.getElementById("email").value;
+      len2=email1.length;
+    if(len2!=0){
+      var email_req1=document.getElementById("email_required")
+      email_req1.hidden=true;
+    }
+  });
+//-------------------------------------------------------------------
+  $("#password").mouseout(function(){
+    var password1=document.getElementById("password").value;
+    len3=password1.length;
+    if(len3!=0){
+      var password_req1=document.getElementById("password_required")
+      password_req1.hidden=true;
+      $("#submitbtn").removeAttr('disabled')
+    }
+  });
+
+  $("#phone").mouseout(function(){
+    var phone1=document.getElementById("phone").value;
+    len3=phone1.length;
+    if(len3!=0){
+      var phone_req1=document.getElementById("phone_required")
+      phone_req1.hidden=true;
+      $("#submitbtn").removeAttr('disabled')
+    }
+  });
+
+
+  $("#repassword").mouseout(function(){
+    var repassword1=document.getElementById("repassword").value;
+    len3=repassword1.length;
+    if(len3!=0){
+      var re_password_req1=document.getElementById("re_password_required")
+      re_password_req1.hidden=true;
+      $("#submitbtn").removeAttr('disabled')
+    }
+      var pass=document.getElementById("password").value;
+      var repass=document.getElementById("repassword").value;
+
+      if(pass==repass){
+      var verify_password=document.getElementById("verify_password")
+      verify_password.hidden=true;
+       $("#submitbtn").removeAttr('disabled')
+    }
+  });
+
+  $("#otp_field").mouseout(function(){
+
+    var otp=document.getElementById("otp_field").value
+    var otp_len=otp.length;
+    if(otp_len!=0)
+    {
+      if(otp==random_value){
+        var loading=document.getElementById("loading")
+        loading.hidden=false;
+        var name=document.getElementById("name").value;
+        var email=document.getElementById("email").value;
+        var password=document.getElementById("password").value;
+        var repassword=document.getElementById("repassword").value;
+        var phone=document.getElementById("phone").value;
+       var url="/Download/email-verified?name="+name+"&phone="+phone+"&email="+email+"&password="+password;
+       alert(url)
+       var req = new XMLHttpRequest();
+      req.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+           if(req.responseText=='true'){
+            var myVar = setInterval(myTimer, 3000);
+            function myTimer(){
+              loading.hidden=true;
+              document.getElementById("registerd").hidden=false;
+              document.getElementById("hid").hidden=true;
+              document.getElementById("otp_field").hidden=true;
+              document.getElementById("ashraf").hidden=true;
+              $("#submitbtn").show();
+              document.getElementById("para").hidden=true;
+              document.getElementById("name").readOnly = false;
+              document.getElementById("email").readOnly = false;
+              document.getElementById("phone").readOnly = false;
+              document.getElementById("password").readOnly = false;
+              document.getElementById("repassword").readOnly =false;
+               clearInterval(myVar);
+            }
+           }
+           if(req.responseText=='false'){
+             loading.hidden=true;
+             document.getElementById("hid").hidden=true;
+             document.getElementById("otp_field").hidden=true;
+             document.getElementById("ashraf").hidden=true;
+             $("#submitbtn").show();
+             document.getElementById("failed").hidden=false;
+             document.getElementById("para").hidden=true;
+             document.getElementById("name").readOnly = false;
+             document.getElementById("email").readOnly = false;
+             document.getElementById("phone").readOnly = false;
+             document.getElementById("password").readOnly = false;
+             document.getElementById("repassword").readOnly =false;
+
+           }
+        }
+      };
+      req.open("GET",url, true);
+      req.send();
+      }
+      else{
+      alert("You have Entered Wrong OTP")
+      var ashraf=document.getElementById("ashraf")
+      ashraf.hidden=true;
+
+      }
+    }
+
+  });
+
+
+
+
+</script>

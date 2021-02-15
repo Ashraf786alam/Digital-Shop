@@ -1,0 +1,32 @@
+{% extends 'Download/header.html' %}
+
+{% block title %}
+My Order
+{% endblock %}
+{% block content %}
+
+   <div class="container mt-4">
+  <h4 class="display-8">My Orders</h4>
+  <hr>
+  <div class="p-4 m-4 rounded">
+  <table class="table">
+     <thead>
+         <tr>
+             <th>SI.NO</th>
+             <th>Product</th>
+             <th>Download</th>
+           </tr>
+       </thead>
+        <tbody>
+          {% for order in orders %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{order.product.name}}</td>
+            <td><a target="_blank" href="/Download/download-paid-product?id={{order.product.id}}" class="ui button teal">Download</a></td>
+          </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+    </div>
+    </div>
+{% endblock %}

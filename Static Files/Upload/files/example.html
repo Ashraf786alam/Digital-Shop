@@ -1,0 +1,68 @@
+<html>
+<head>
+<h1>calculator</h1>
+<script>
+   function show1()
+{
+   var a=document.getElementById("pop1").value;
+var b=document.getElementById("pop2").value;
+  var c=parseFloat(a)+parseFloat(b);
+  document.getElementById("result").value=c;
+var b1=document.getElementById("pop2").placeholder;
+alert(b1);
+   
+}
+ function show2()
+{
+   var a=document.getElementById("pop1").value;
+var b=document.getElementById("pop2").value;
+  var c=parseFloat(a)-parseFloat(b);
+  document.getElementById("result").value=c;
+   
+}
+ function show3()
+{
+   var a=document.getElementById("pop1").value;
+var b=document.getElementById("pop2").value;
+  var c=parseFloat(a)*parseFloat(b);
+  document.getElementById("result").value=c;
+   
+}
+ function show4()
+{
+   var a=document.getElementById("pop1").value;
+   var b=document.getElementById("pop2").value;
+
+  var c=parseFloat(a)/parseFloat(b);
+  document.getElementById("result").value=c;
+   
+}
+ function show5()
+{
+   var a=document.getElementById("pop1").value;
+var b=document.getElementById("pop2").value;
+  
+  var c=parseFloat(a)%parseFloat(b);
+  document.getElementById("result").value=c;
+   
+}
+
+</script>
+</head>
+<body>
+<div  style="background-color:lightblue ; width:200px ;height:200px">
+<br>
+ <input type="text" id="pop1" placeholder="Enter first No" /><br/><br/>
+<input type="text"  id="pop2" placeholder="Enter second No"><br/><br/>
+<input type="text" id="result" placeholder="Result">
+<br><br>
+<button  onclick="show1()" id="mybtn1" >+</button>
+<button  onclick="show2()"  id="mybtn2" >-</button>
+<button  onclick="show3()" id="mybtn3" >*</button>
+<br><br>
+<button  onclick="show4()"  id="mybtn4" >/</button>
+<button  onclick="show5()"  id="mybtn5" >%</button>
+<button  onclick="show6()"  id="mybtn6" >^</button>
+</div>
+</body>
+</html>

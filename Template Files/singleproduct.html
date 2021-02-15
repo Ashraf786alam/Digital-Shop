@@ -1,0 +1,45 @@
+{% extends 'Download/header.html' %}
+{% load custom_filter%}
+{% load static %}
+{%block title%}{{product.name}}{%endblock%}
+
+{% block content %}
+<div class="container mt-4 p-4">
+<div class="row">
+<div class="col-5">
+<img id="mainimage" src="{{product.thumbnail.url}}" class="img-fluid rounded" style="border:1px solid lightgray"></img>
+
+<div class="row mt-2">
+   {% for image in Images %}
+   <div class="col"><img onclick="changeImage(event)" class="img-thumbnail" src="{{image.image.url}}" style="height:130px;width:150px"></img></div>
+   {% endfor %}
+  </div>
+</div>
+
+<div class="col-7">
+<h6>Name: {{product.name}}</h6>
+<hr>
+<h6 class="text-danger">Save: {{product.discount}}%</h6>
+<h6>Price: <del style="color:lightgray">{{product.price|add_rupee}}</del> &nbsp;{{product.price|discount_price:product.discount|add_rupee}}</h6>
+<br>
+{% if can_download%}
+<a target="_blank" href="/Download/download-paid-product?id={{product.id}}">Download</a>
+{% else %}
+{% if product|sale_price == 0 %}
+<a href="/Download/free-download?id={{product.id}}" class="btn btn-info">Download Free</a>
+{% else %}
+<a href="/Download/create-payment?id={{product.id}}" class="btn btn-info">Download Now</a>
+{% endif %}
+{% endif %}
+<hr>
+<h6>File Size:<small style="color:gray">{{product.fileSize}}</small></h6>
+<h6>Description:</h6>
+<p>{{product.description}}</p>
+<hr>
+</div>
+
+</div>
+</div>
+<script src="{% static 'js/jquery.js' %}"></script>
+          {% include "Download/jquery.html" %}
+{% endblock %}

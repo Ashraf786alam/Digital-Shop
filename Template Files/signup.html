@@ -1,0 +1,82 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <!-- Add custom stylesheet here -->
+    <title>SignUp Page</title>
+  </head>
+  <body>
+
+   <center>
+    <table>
+      <tr>
+        <td><div style="width:500px;height:50px"></div></td>
+        <td><h5 style="color:gray">SignUp Page</h5></td>
+        <td><a href="/Download/login/" style="margin-left:685px;font-size:20px">Login</a></td>
+  </tr>
+  </table>
+  </center>
+
+    <div style="width:100px;height:20px"></div>
+  <h5 hidden id="para" style="margin-left:450px;color:green">An OTP has been sent to Your Registerd Email</h5>
+  <br>
+  <div class="form-group" style="margin-left:400px">
+
+  <div class="ui active dimmer" id="loading" hidden>
+    <div class="ui large text loader">loading</div>
+  </div>
+
+    <label for="">Name</label>
+    <input type="text" required class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Name" style="width:400px">
+    <small hidden id="name_required" style="color:red">Name is required</small>
+  </div>
+
+  <div class="form-group" style="margin-left:400px">
+    <label for="">Enter Phone No</label>
+    <input type="number" required class="form-control" id="phone"  placeholder="9875356772" style="width:400px">
+    <small hidden id="phone_required" style="color:red">PhoneNo is required</small>
+  </div>
+
+  <div class="form-group" style="margin-left:400px">
+    <label for="">Enter Email</label>
+    <input type="email" required class="form-control" id="email"  placeholder="Email" style="width:400px">
+    <small hidden id="email_required" style="color:red">Email is required</small>
+  </div>
+
+  <div class="form-group" style="margin-left:400px">
+    <label for="">Enter Password</label>
+    <input type="password" required class="form-control" id="password" placeholder="*******" style="width:400px">
+     <small hidden id="password_required" style="color:red">Password is required</small>
+  </div>
+
+  <div class="form-group" style="margin-left:400px">
+    <label for="">Re Enter Password</label>
+    <input type="password" required  class="form-control" id="repassword" placeholder="*******" style="width:400px">
+     <small hidden id="re_password_required" style="color:red">Re Enter Password</small>
+     <small hidden id="verify_password" style="color:red">Password Doesn't Match</small>
+  </div>
+
+  <div id="div1" hidden>
+  <h6 hidden id="hid">Verify Your Email</h6>
+  <input type="text" id="otp_field" style="padding-left:10px"  hidden placeholder="Enter OTP"></input>
+   </div>
+   <h5 id="ashraf" style="margin-left:610px;margin-top:-38px" hidden>&#9989</h5>
+
+  <button type="submit" id="submitbtn" class="btn btn-primary" style="margin-left:570px" onclick="fun()">Submit</button>
+
+  <h4 id="failed" style="color:red;margin-left:400px" hidden>Account couldnot created.Because Email Already Registerd</h4>
+
+  <br><br>
+  <h5 id="registerd" style="color:green;margin-left:400px" hidden>Your Account has been craeted successfully &#9989</h5>
+  <script src="{% static 'js/jquery.js' %}"></script>
+  {% include "Download/ajax.html" %}
+
+  </body>
+</html>

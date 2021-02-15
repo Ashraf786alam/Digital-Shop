@@ -1,0 +1,33 @@
+{% extends 'Download/header.html' %}
+
+{% block title %}
+Login Page
+{% endblock %}
+{% block content %}
+   <center>
+    <h5>Login Page</h5>
+  <div class="form-group" style="margin-top:50px">
+  <div class="ui active dimmer" id="loading" hidden>
+    <div class="ui large text loader">loading</div>
+  </div>
+  {% if msg %}
+   <h5 class="text-danger">{{msg}}</h5>
+  {% endif %}
+  <form action="" method="post">
+    {% csrf_token %}
+  <div class="form-group">
+    <input type="email" required class="form-control" name="email"  placeholder="Email" style="width:400px">
+  </div>
+<br>
+  <div class="form-group">
+
+    <input type="password" required class="form-control" name="password" placeholder="*******" style="width:400px">
+  </div>
+   <br>
+  <button type="submit" id="submitbtn" class="btn btn-primary">Login</button>
+ <a class="" href="/Download/forgot-password/" style="margin-left:5px;">Forgot Password?</a>
+</form>
+</div>
+</center>
+
+{% endblock %}

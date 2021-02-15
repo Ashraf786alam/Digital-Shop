@@ -1,0 +1,31 @@
+{% extends 'Download/header.html' %}
+
+{% block title %}
+Home Page
+{% endblock %}
+{% load custom_filter %}
+{% block content %}
+<div class="container">
+<div class="row mx-auto">
+{% for prod in product %}
+<div class="col-4 p-3">
+<div class="card" style="width:18rem;">
+  <img src="{{prod.thumbnail.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5>{{prod.name|title}}</h5>
+    <hr>
+    <h6 class="text-danger p-0 m-0">Save: {{prod.discount}}%</h6>
+
+    <p>Price: <del style="color:lightgray">{{prod.price|add_rupee}}</del>     {{prod.price|discount_price:prod.discount|add_rupee}}</p>
+
+  </div>
+  <div class="card-footer p-0">
+ <center><a href="/Download/show/?id={{prod.id}}" class="btn btn-light btn-block">Show More</a></center>
+  </div>
+</div>
+</div>
+{% endfor %}
+</div>
+
+</div>
+{% endblock %}
