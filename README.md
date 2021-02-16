@@ -6,4 +6,4 @@ ii. At the time of SignUp we check is the user is already register or not?.when 
 
 iii. If the Email is not Registerd then the user proceed for the SignUp,and when the user click on SignUp button then at that time we send an OTP to the user email.After the OTP verification we redirect user to the Login page.
 
-iv. Once complete the login we redirect user to the home page where user can download the products after Payment. Payment Gateway:Instamojo/Razorpay.
+iv. Once complete the login we redirect user to the home page where user can download the products after payment using payment gateway like Instamojo/Razorpay.
